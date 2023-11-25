@@ -29,3 +29,7 @@ tasks.test {
 tasks.compileJava {
     options.release = 20
 }
+
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
+}
