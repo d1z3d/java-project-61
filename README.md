@@ -4,5 +4,5 @@
 ## Asciinema
 
 ```bash
-[Lesson 5](https://asciinema.org/a/YyrpQ3MGtMsKrdczgwKC1HlGr)
+[[Lesson 5](https://asciinema.org/a/YyrpQ3MGtMsKrdczgwKC1HlGr)]
 ```
