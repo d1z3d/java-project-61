@@ -1,4 +1,5 @@
 plugins {
+    application
     id("java")
     id("checkstyle")
     id("se.patrikerdes.use-latest-versions") version "0.2.18"
@@ -12,6 +13,10 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass.set("hexlet.code.App")
+}
+
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -19,4 +24,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.compileJava {
+    options.release = 20
 }
