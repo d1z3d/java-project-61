@@ -3,5 +3,6 @@
 
 ## Asciinema
 [Stage 5](https://asciinema.org/a/YyrpQ3MGtMsKrdczgwKC1HlGr)
+
 [Stage 6](https://asciinema.org/a/WhzUpJN1N49osCvTHJvkiFME6)
 
