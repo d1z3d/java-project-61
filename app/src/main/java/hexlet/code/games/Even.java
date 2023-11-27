@@ -1,7 +1,7 @@
-package hexlet.code.games.even;
+package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.models.User;
+import hexlet.code.User;
 
 public class Even {
 

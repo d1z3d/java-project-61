@@ -1,4 +1,4 @@
-package hexlet.code.models;
+package hexlet.code;
 
 public class User {
     private String name;

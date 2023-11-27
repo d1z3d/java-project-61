@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.models.User;
-
 import java.util.Scanner;
 
 public class Cli {
