@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -35,8 +36,23 @@ public class Engine {
     public static void askQuestion(int firstValue, int secondValue, String operation) {
         System.out.printf("Question: %d %s %d\n", firstValue, operation, secondValue);
     }
+
     public static void askQuestion(int firstValue, int secondValue) {
         System.out.printf("Question: %d %d\n", firstValue, secondValue);
+    }
+
+    public static void askQuestion(int[] progression, int index) {
+        String[] temp = Arrays.toString(progression)
+                .replace("[", "")
+                .replace("]", "")
+                .split(", ");
+        temp[index] = "..";
+
+        System.out.print("Question: ");
+        for (String item : temp) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
     }
 
     public static String getAnswer() {
@@ -75,9 +91,14 @@ public class Engine {
         System.out.printf("Congratulations, %s!\n", user.getName());
     }
 
+    public static int getRandomNumber(int origin, int bound) {
+        return RANDOM.nextInt(origin, bound);
+    }
+
     public static int getRandomNumber(int bound) {
         return RANDOM.nextInt(bound);
     }
+
 
     public static void compareAnswers(User user, String answer, String correctAnswer) {
         if (answer.equalsIgnoreCase(correctAnswer)) {
@@ -94,5 +115,19 @@ public class Engine {
     public static String getRandomOperation() {
         int randomIndex = getRandomNumber(OPERATIONS.length);
         return OPERATIONS[randomIndex];
+    }
+
+    public static int[] createProgression(int range) {
+        int valueOfStartProgression = getRandomNumber(21);
+        int lengthProgression = getRandomNumber(5, 11);
+        int[] progression = new int[lengthProgression];
+
+        progression[0] = valueOfStartProgression;
+
+        for (int i = 1; i < lengthProgression; i++) {
+            progression[i] = progression[i - 1] + range;
+        }
+
+        return progression;
     }
 }

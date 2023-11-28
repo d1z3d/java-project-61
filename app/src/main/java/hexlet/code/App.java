@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calculator;
 import hexlet.code.games.Even;
 import hexlet.code.games.GreatestCommonDivision;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ public class App {
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
 
@@ -35,6 +37,10 @@ public class App {
                 Calculator.start(user);
             case "4":
                 GreatestCommonDivision.start(user);
+                break;
+            case "5":
+                Progression.start(user);
+                break;
             case "0":
                 System.out.println("Goodbye!");
                 break;
