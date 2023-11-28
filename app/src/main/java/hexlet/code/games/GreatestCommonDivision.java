@@ -3,7 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.User;
 
-//TODO
 public class GreatestCommonDivision {
     public static void start(User user) {
         new Engine(user);

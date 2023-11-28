@@ -1,9 +1,10 @@
 package hexlet.code;
 
-import hexlet.code.games.Calculator;
 import hexlet.code.games.Even;
-import hexlet.code.games.GreatestCommonDivision;
+import hexlet.code.games.Calculator;
+import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
+import hexlet.code.games.GreatestCommonDivision;
 
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class App {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
 
@@ -25,21 +27,21 @@ public class App {
 
         switch (userInput) {
             case "1":
-                //Greet
                 Cli.start(user);
                 break;
             case "2":
-                //Even
                 Even.start(user);
                 break;
             case "3":
-                //Calc
                 Calculator.start(user);
             case "4":
                 GreatestCommonDivision.start(user);
                 break;
             case "5":
                 Progression.start(user);
+                break;
+            case "6":
+                Prime.start(user);
                 break;
             case "0":
                 System.out.println("Goodbye!");

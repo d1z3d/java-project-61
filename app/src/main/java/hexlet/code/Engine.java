@@ -87,6 +87,50 @@ public class Engine {
         return result == 0 ? minValue : calculateGCD(minValue, result);
     }
 
+    public static int[] calculatePrimeArray(int range) {
+        int attempts = getRandomNumber(range);
+
+        int lengthArray = calculateLengthArrayForPrimeGame(attempts) - 1;
+        int[] result = new int[lengthArray];
+        int indexToInsert = 0;
+
+        int dividers = 1;
+
+        for (int i = 2; i <= attempts; i++) {
+            for (int j = 2; j <= i; j++) {
+                if (i % j == 0) {
+                    dividers++;
+                }
+            }
+            if (dividers <= 2) {
+                result[indexToInsert] = i;
+                indexToInsert++;
+            }
+            dividers = 1;
+        }
+
+        return result;
+    }
+
+    private static int calculateLengthArrayForPrimeGame(int number) {
+        //Считаю, что каждое каждое число можем делить на 1, поэтому начинаю массив с числа 2
+        int lengthArray = 1;
+        int dividers = 1;
+
+        for (int i = 2; i <= number; i++) {
+            for (int j = 2; j <= i; j++) {
+                if (i % j == 0) {
+                    dividers++;
+                }
+            }
+            if (dividers < 3) {
+                lengthArray++;
+            }
+            dividers = 1;
+        }
+        return lengthArray;
+    }
+
     public static void userCongratulation(User user) {
         System.out.printf("Congratulations, %s!\n", user.getName());
     }
