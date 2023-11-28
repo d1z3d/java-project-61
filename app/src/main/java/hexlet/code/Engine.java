@@ -4,13 +4,21 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Engine {
+public final class Engine {
     private static final Random RANDOM = new Random();
     private static final String[] OPERATIONS = {"+", "-", "*"};
+    private static final int DEFAULT_NUMBER_OF_PROGRESSION = 21;
+    private static final int MIN_LENGTH_OF_PROGRESSION = 5;
+    private static final int MAX_LENGTH_OF_PROGRESSION = 11;
+    private static final int DEFAULT_RANGE = 101;
+    private static int dividers = 1;
     private static int successAttempts = 3;
 
-    public Engine(User user) {
-        Cli.start(user);
+    private Engine() {
+
+    }
+    public static int getDefaultRange() {
+        return DEFAULT_RANGE;
     }
 
     public static int getSuccessAttempts() {
@@ -87,14 +95,12 @@ public class Engine {
         return result == 0 ? minValue : calculateGCD(minValue, result);
     }
 
-    public static int[] calculatePrimeArray(int range) {
-        int attempts = getRandomNumber(range);
+    public static int[] calculatePrimeArray() {
+        int attempts = getRandomNumber(DEFAULT_RANGE);
 
         int lengthArray = calculateLengthArrayForPrimeGame(attempts) - 1;
         int[] result = new int[lengthArray];
         int indexToInsert = 0;
-
-        int dividers = 1;
 
         for (int i = 2; i <= attempts; i++) {
             for (int j = 2; j <= i; j++) {
@@ -115,7 +121,6 @@ public class Engine {
     private static int calculateLengthArrayForPrimeGame(int number) {
         //Считаю, что каждое каждое число можем делить на 1, поэтому начинаю массив с числа 2
         int lengthArray = 1;
-        int dividers = 1;
 
         for (int i = 2; i <= number; i++) {
             for (int j = 2; j <= i; j++) {
@@ -162,8 +167,8 @@ public class Engine {
     }
 
     public static int[] createProgression(int range) {
-        int valueOfStartProgression = getRandomNumber(21);
-        int lengthProgression = getRandomNumber(5, 11);
+        int valueOfStartProgression = getRandomNumber(DEFAULT_NUMBER_OF_PROGRESSION);
+        int lengthProgression = getRandomNumber(MIN_LENGTH_OF_PROGRESSION, MAX_LENGTH_OF_PROGRESSION);
         int[] progression = new int[lengthProgression];
 
         progression[0] = valueOfStartProgression;

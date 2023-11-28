@@ -1,18 +1,17 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.User;
 
 public class Progression {
     public static void start(User user) {
-        new Engine(user);
+        Cli.start(user);
 
         while (Engine.getSuccessAttempts() > 0) {
             Engine.describeGame("What number is missing in the progression?");
 
-            //Беру рандомный диапазон
             int range = Engine.getRandomNumber(12);
-
             //Получаю прогрессию с рандомным диапазоном
             int[] progression = Engine.createProgression(range);
 

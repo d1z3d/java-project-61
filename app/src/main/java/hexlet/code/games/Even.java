@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.User;
 
@@ -7,12 +8,12 @@ public class Even {
 
 
     public static void start(User user) {
-        new Engine(user);
+        Cli.start(user);
 
         while (Engine.getSuccessAttempts() > 0) {
             Engine.describeGame("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-            int randomNumber = Engine.getRandomNumber(101);
+            int randomNumber = Engine.getRandomNumber(Engine.getDefaultRange());
 
             Engine.askQuestion(Integer.toString(randomNumber));
 

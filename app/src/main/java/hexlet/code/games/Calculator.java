@@ -1,17 +1,18 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.User;
 
 public class Calculator {
     public static void start(User user) {
-        new Engine(user);
+        Cli.start(user);
 
         while (Engine.getSuccessAttempts() > 0) {
             Engine.describeGame("What is the result of the expression?");
 
-            int firstValue = Engine.getRandomNumber(101);
-            int secondValue = Engine.getRandomNumber(101);
+            int firstValue = Engine.getRandomNumber(Engine.getDefaultRange());
+            int secondValue = Engine.getRandomNumber(Engine.getDefaultRange());
             String operation = Engine.getRandomOperation();
 
             String correctAnswer = Engine.calculate(firstValue, secondValue, operation);
