@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Engine {
     private static final Random RANDOM = new Random();
-    private static final String[] OPERATIONS = {"+", "-", "*", "/"};
+    private static final String[] OPERATIONS = {"+", "-", "*"};
     private static int successAttempts = 3;
 
     public Engine(User user) {
@@ -16,11 +16,11 @@ public class Engine {
         return successAttempts;
     }
 
-    public static void setSuccessAttempts(int successAttempts) {
+    private static void setSuccessAttempts(int successAttempts) {
         Engine.successAttempts = successAttempts;
     }
 
-    public static void decrementSuccessAttempts() {
+    private static void decrementSuccessAttempts() {
         successAttempts--;
     }
 
@@ -34,6 +34,9 @@ public class Engine {
 
     public static void askQuestion(int firstValue, int secondValue, String operation) {
         System.out.printf("Question: %d %s %d\n", firstValue, operation, secondValue);
+    }
+    public static void askQuestion(int firstValue, int secondValue) {
+        System.out.printf("Question: %d %d\n", firstValue, secondValue);
     }
 
     public static String getAnswer() {
@@ -54,15 +57,18 @@ public class Engine {
                 return Integer.toString(firstValue - secondValue);
             case "*":
                 return Integer.toString(firstValue * secondValue);
-            case "/":
-                if (firstValue != 0 && secondValue != 0) {
-                    return Integer.toString(firstValue / secondValue);
-                } else {
-                    return "You can't divide by 0";
-                }
             default:
                 return "";
         }
+    }
+
+    public static int calculateGCD(int value1, int value2) {
+        int maxValue = Math.max(value1, value2);
+        int minValue = Math.min(value1, value2);
+
+        int result = maxValue % minValue;
+
+        return result == 0 ? minValue : calculateGCD(minValue, result);
     }
 
     public static void userCongratulation(User user) {
