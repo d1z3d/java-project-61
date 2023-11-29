@@ -24,6 +24,7 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.next();
+        System.out.println();
 
         switch (userInput) {
             case "1":
