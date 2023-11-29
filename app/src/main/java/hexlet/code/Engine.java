@@ -152,12 +152,13 @@ public final class Engine {
     public static void compareAnswers(User user, String answer, String correctAnswer) {
         if (answer.equalsIgnoreCase(correctAnswer)) {
             System.out.println("Correct!");
-            Engine.decrementSuccessAttempts();
+            decrementSuccessAttempts();
         } else {
             //Должно быть 3 подряд успешных ответа.
-            Engine.setSuccessAttempts(3);
+            setSuccessAttempts(3);
             System.out.printf("'%s' is wrong answer ;(. Correct answer '%s'\n", answer, correctAnswer);
             System.out.printf("Let's try again, %s!\n", user.getName());
+            System.exit(0);
         }
     }
 
