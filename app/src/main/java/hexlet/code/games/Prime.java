@@ -5,6 +5,8 @@ import hexlet.code.Engine;
 import hexlet.code.User;
 import org.apache.commons.lang3.ArrayUtils;
 
+import java.util.Arrays;
+
 public class Prime {
     public static void start(User user) {
         Cli.start(user);
@@ -14,7 +16,7 @@ public class Prime {
         for (int i = 0; i < Engine.getAttemptsToWin(); i++) {
             Engine.describeGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
-            int randomNumber = Engine.getRandomNumber(Engine.getDefaultRange());
+            int randomNumber = Engine.getRandomNumber(primeNumbers[primeNumbers.length-1]);
             boolean isContains = ArrayUtils.contains(primeNumbers, randomNumber);
             String correctAnswer = Engine.getCorrectAnswer(isContains);
 
