@@ -8,7 +8,7 @@ public class GreatestCommonDivision {
     public static void start(User user) {
         Cli.start(user);
 
-        while (Engine.getSuccessAttempts() > 0) {
+        for (int i = 0; i < Engine.getAttemptsToWin(); i++) {
             Engine.describeGame("Find the greatest common divisor of given numbers.");
 
             int numberOne = Engine.getRandomNumber(Engine.getDefaultRange());
@@ -20,10 +20,8 @@ public class GreatestCommonDivision {
             String answer = Engine.getAnswer();
 
             Engine.compareAnswers(user, answer, Integer.toString(correctAnswer));
-
-            if (Engine.getSuccessAttempts() == 0) {
-                Engine.userCongratulation(user);
-            }
         }
+
+        Engine.userCongratulation(user);
     }
 }

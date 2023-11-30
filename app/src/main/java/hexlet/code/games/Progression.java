@@ -5,10 +5,11 @@ import hexlet.code.Engine;
 import hexlet.code.User;
 
 public class Progression {
+    private static int counter;
     public static void start(User user) {
         Cli.start(user);
 
-        while (Engine.getSuccessAttempts() > 0) {
+        for (int i = 0; i < Engine.getAttemptsToWin(); i++) {
             Engine.describeGame("What number is missing in the progression?");
 
             int range = Engine.getRandomNumber(Engine.getDefaultRange());
@@ -26,10 +27,8 @@ public class Progression {
             String answer = Engine.getAnswer();
 
             Engine.compareAnswers(user, answer, correctAnswer);
-
-            if (Engine.getSuccessAttempts() == 0) {
-                Engine.userCongratulation(user);
-            }
         }
+
+        Engine.userCongratulation(user);
     }
 }

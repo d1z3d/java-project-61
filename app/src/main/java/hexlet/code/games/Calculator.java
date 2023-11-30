@@ -8,7 +8,7 @@ public class Calculator {
     public static void start(User user) {
         Cli.start(user);
 
-        while (Engine.getSuccessAttempts() > 0) {
+        for (int i = 0; i < Engine.getAttemptsToWin(); i++) {
             Engine.describeGame("What is the result of the expression?");
 
             int firstValue = Engine.getRandomNumber(Engine.getDefaultRange());
@@ -25,11 +25,8 @@ public class Calculator {
 
             //Сравнение ответов
             Engine.compareAnswers(user, answer, correctAnswer);
-
-            //Поздравление пользователя, если осталось 0 попыток до победы
-            if (Engine.getSuccessAttempts() == 0) {
-                Engine.userCongratulation(user);
-            }
         }
+
+        Engine.userCongratulation(user);
     }
 }

@@ -13,8 +13,9 @@ public final class Engine {
     private static final int DEFAULT_RANGE = 101;
     private static final int MAX_DIVIDERS = 3;
     private static final int MIN_DIVIDERS = 2;
+    private static final int ATTEMPTS_TO_WIN = 3;
     private static int dividers = 1;
-    private static int successAttempts = 3;
+
 
     private Engine() {
 
@@ -23,12 +24,8 @@ public final class Engine {
         return DEFAULT_RANGE;
     }
 
-    public static int getSuccessAttempts() {
-        return successAttempts;
-    }
-
-    private static void decrementAttempts() {
-        successAttempts--;
+    public static int getAttemptsToWin() {
+        return ATTEMPTS_TO_WIN;
     }
 
     public static void describeGame(String description) {
@@ -150,7 +147,6 @@ public final class Engine {
     public static void compareAnswers(User user, String answer, String correctAnswer) {
         if (answer.equalsIgnoreCase(correctAnswer)) {
             System.out.println("Correct!");
-            decrementAttempts();
         } else {
             System.out.printf("'%s' is wrong answer ;(. Correct answer '%s'\n", answer, correctAnswer);
             System.out.printf("Let's try again, %s!\n", user.getName());

@@ -11,7 +11,7 @@ public class Prime {
 
         int[] primeNumbers = Engine.calculatePrimeArray();
 
-        while (Engine.getSuccessAttempts() > 0) {
+        for (int i = 0; i < Engine.getAttemptsToWin(); i++) {
             Engine.describeGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
             int randomNumber = Engine.getRandomNumber(Engine.getDefaultRange());
@@ -23,10 +23,8 @@ public class Prime {
             String answer = Engine.getAnswer();
 
             Engine.compareAnswers(user, answer, correctAnswer);
-
-            if (Engine.getSuccessAttempts() == 0) {
-                Engine.userCongratulation(user);
-            }
         }
+
+        Engine.userCongratulation(user);
     }
 }
