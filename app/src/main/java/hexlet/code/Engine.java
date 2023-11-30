@@ -10,9 +10,10 @@ public final class Engine {
     private static final int DEFAULT_NUMBER_OF_PROGRESSION = 21;
     private static final int MIN_LENGTH_OF_PROGRESSION = 5;
     private static final int MAX_LENGTH_OF_PROGRESSION = 11;
+    private static final int MAX_DIVIDERS = 2;
     private static final int DEFAULT_RANGE = 101;
     private static int dividers = 1;
-    private static int successfullAttempts = 3;
+    private static int successfulAttempts = 3;
 
     private Engine() {
 
@@ -22,11 +23,11 @@ public final class Engine {
     }
 
     public static int getSuccessAttempts() {
-        return successfullAttempts;
+        return successfulAttempts;
     }
 
     private static void decrementAttempts() {
-        successfullAttempts--;
+        successfulAttempts--;
     }
 
     public static void describeGame(String description) {
@@ -104,7 +105,7 @@ public final class Engine {
                     dividers++;
                 }
             }
-            if (dividers <= 2) {
+            if (dividers <= MAX_DIVIDERS) {
                 result[indexToInsert] = i;
                 indexToInsert++;
             }
@@ -124,7 +125,7 @@ public final class Engine {
                     dividers++;
                 }
             }
-            if (dividers < 3) {
+            if (dividers <= MAX_DIVIDERS) {
                 lengthArray++;
             }
             dividers = 1;

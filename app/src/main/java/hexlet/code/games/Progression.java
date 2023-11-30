@@ -11,7 +11,7 @@ public class Progression {
         while (Engine.getSuccessAttempts() > 0) {
             Engine.describeGame("What number is missing in the progression?");
 
-            int range = Engine.getRandomNumber(12);
+            int range = Engine.getRandomNumber(Engine.getDefaultRange());
             //Получаю прогрессию с рандомным диапазоном
             int[] progression = Engine.createProgression(range);
 
