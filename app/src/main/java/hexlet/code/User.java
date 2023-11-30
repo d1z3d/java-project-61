@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class User {
+public final class User {
     private String name;
 
     public String getName() {

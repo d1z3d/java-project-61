@@ -12,7 +12,7 @@ public final class Engine {
     private static final int MAX_LENGTH_OF_PROGRESSION = 11;
     private static final int DEFAULT_RANGE = 101;
     private static int dividers = 1;
-    private static int successAttempts = 3;
+    private static int successfullAttempts = 3;
 
     private Engine() {
 
@@ -22,15 +22,11 @@ public final class Engine {
     }
 
     public static int getSuccessAttempts() {
-        return successAttempts;
+        return successfullAttempts;
     }
 
-    private static void setSuccessAttempts(int successAttempts) {
-        Engine.successAttempts = successAttempts;
-    }
-
-    private static void decrementSuccessAttempts() {
-        successAttempts--;
+    private static void decrementAttempts() {
+        successfullAttempts--;
     }
 
     public static void describeGame(String description) {
@@ -152,10 +148,8 @@ public final class Engine {
     public static void compareAnswers(User user, String answer, String correctAnswer) {
         if (answer.equalsIgnoreCase(correctAnswer)) {
             System.out.println("Correct!");
-            decrementSuccessAttempts();
+            decrementAttempts();
         } else {
-            //Должно быть 3 подряд успешных ответа.
-            setSuccessAttempts(3);
             System.out.printf("'%s' is wrong answer ;(. Correct answer '%s'\n", answer, correctAnswer);
             System.out.printf("Let's try again, %s!\n", user.getName());
             System.exit(0);
