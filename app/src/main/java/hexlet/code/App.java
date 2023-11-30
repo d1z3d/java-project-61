@@ -35,6 +35,7 @@ public class App {
                 break;
             case "3":
                 Calculator.start(user);
+                break;
             case "4":
                 GreatestCommonDivision.start(user);
                 break;
