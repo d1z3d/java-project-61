@@ -1,32 +1,64 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-import hexlet.code.User;
+import hexlet.code.Util;
+
 
 public class Calculator {
-    public static void start(User user) {
-        Cli.start(user);
+    private static final String DESCRIPTION_OF_THE_GAME = "What is the result of the expression?";
+    private static final String[] QUESTIONS = new String[Util.ATTEMPTS_TO_WIN];
+    private static final String[] CORRECT_ANSWERS = new String[Util.ATTEMPTS_TO_WIN];
+    private static final String[] OPERATIONS = {"+", "-", "*"};
 
-        for (int i = 0; i < Engine.getAttemptsToWin(); i++) {
-            Engine.describeGame("What is the result of the expression?");
+    public static void start() {
+        //Подготовка данных
+        for (int i = 0; i < Util.ATTEMPTS_TO_WIN; i++) {
+            String question = prepareQuestion();
+            String correctAnswer = calculate(question);
 
-            int firstValue = Engine.getRandomNumber(Engine.getDefaultRange());
-            int secondValue = Engine.getRandomNumber(Engine.getDefaultRange());
-            String operation = Engine.getRandomOperation();
-
-            String correctAnswer = Engine.calculate(firstValue, secondValue, operation);
-
-            //Вопрос
-            Engine.askQuestion(firstValue, secondValue, operation);
-
-            //Ввод пользователя
-            String answer = Engine.getAnswer();
-
-            //Сравнение ответов
-            Engine.compareAnswers(user, answer, correctAnswer);
+            QUESTIONS[i] = question;
+            CORRECT_ANSWERS[i] = correctAnswer;
         }
 
-        Engine.userCongratulation(user);
+        //Старт игры
+        Engine.playGame(DESCRIPTION_OF_THE_GAME, QUESTIONS, CORRECT_ANSWERS);
     }
+
+
+    private static String getRandomOperation() {
+        int randomIndex = Util.getRandomNumber(OPERATIONS.length);
+        return OPERATIONS[randomIndex];
+    }
+
+    private static String prepareQuestion() {
+        String firstOperand = Integer.toString(Util.getRandomNumber());
+        String secondOperand = Integer.toString(Util.getRandomNumber());
+        String operation = getRandomOperation();
+
+        return String.format("%s %s %s", firstOperand, operation, secondOperand);
+    }
+
+    private static String calculate(String question) {
+        String[] questionByItem = question.split(" ");
+
+        int firstOperand = Integer.parseInt(questionByItem[0]);
+        int secondOperand = Integer.parseInt(questionByItem[2]);
+        String operation = questionByItem[1];
+
+        switch (operation) {
+            case "+" -> {
+                return Integer.toString(firstOperand + secondOperand);
+            }
+            case "-" -> {
+                return Integer.toString(firstOperand - secondOperand);
+            }
+            case "*" -> {
+                return Integer.toString(firstOperand * secondOperand);
+            }
+            default -> {
+                return "";
+            }
+        }
+    }
+
 }

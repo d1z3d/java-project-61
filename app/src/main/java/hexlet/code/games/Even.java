@@ -1,39 +1,31 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-import hexlet.code.User;
+import hexlet.code.Util;
 
 public class Even {
+    private static final String DESCRIPTION_OF_THE_GAME = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private static final String[] QUESTIONS = new String[Util.ATTEMPTS_TO_WIN];
+    private static final String[] CORRECT_ANSWERS = new String[Util.ATTEMPTS_TO_WIN];
 
+    public static void start() {
+        //Подготовка данных
+        for (int i = 0; i < Util.ATTEMPTS_TO_WIN; i++) {
+            int randomNumber = Util.getRandomNumber();
+            QUESTIONS[i] = Integer.toString(randomNumber);
 
-    public static void start(User user) {
-        Cli.start(user);
-
-        for (int i = 0; i < Engine.getAttemptsToWin(); i++) {
-            Engine.describeGame("Answer 'yes' if the number is even, otherwise answer 'no'.");
-
-            int randomNumber = Engine.getRandomNumber(Engine.getDefaultRange());
-
-            Engine.askQuestion(Integer.toString(randomNumber));
-
-            //Получение ответа от пользователя
-            String answer = Engine.getAnswer();
-
-            //Четное ли число
             boolean isEven = isEven(randomNumber);
-
-            //Определение правильного ответа
-            String correctAnswer = Engine.getCorrectAnswer(isEven);
-
-            //Сравнение ответов
-            Engine.compareAnswers(user, answer, correctAnswer);
+            String correctAnswer = Util.getCorrectAnswer(isEven);
+            CORRECT_ANSWERS[i] = correctAnswer;
         }
 
-        Engine.userCongratulation(user);
+        //Старт игры
+        Engine.playGame(DESCRIPTION_OF_THE_GAME, QUESTIONS, CORRECT_ANSWERS);
     }
 
     private static boolean isEven(int value) {
         return value % 2 == 0;
     }
+
+
 }

@@ -8,18 +8,25 @@ import hexlet.code.games.GreatestCommonDivision;
 
 import java.util.Scanner;
 
-public class App {
+public final class App {
+    private static String userName;
+
+    private App() {
+        userName = "User";
+    }
 
     public static void main(String[] args) {
-        User user = new User();
-        System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet");
-        System.out.println("2 - Even");
-        System.out.println("3 - Calc");
-        System.out.println("4 - GCD");
-        System.out.println("5 - Progression");
-        System.out.println("6 - Prime");
-        System.out.println("0 - Exit");
+
+        System.out.println("""
+                Please enter the game number and press Enter.
+                1 - Greet
+                2 - Even
+                3 - Calc
+                4 - GCD
+                5 - Progression
+                6 - Prime
+                0 - Exit
+                """);
         System.out.print("Your choice: ");
 
         Scanner scanner = new Scanner(System.in);
@@ -27,30 +34,22 @@ public class App {
         System.out.println();
 
         switch (userInput) {
-            case "1":
-                Cli.start(user);
-                break;
-            case "2":
-                Even.start(user);
-                break;
-            case "3":
-                Calculator.start(user);
-                break;
-            case "4":
-                GreatestCommonDivision.start(user);
-                break;
-            case "5":
-                Progression.start(user);
-                break;
-            case "6":
-                Prime.start(user);
-                break;
-            case "0":
-                System.out.println("Goodbye!");
-                break;
-            default:
-                System.out.println("Unexpected data");
-                break;
+            case "1" -> Cli.start();
+            case "2" -> Even.start();
+            case "3" -> Calculator.start();
+            case "4" -> GreatestCommonDivision.start();
+            case "5" -> Progression.start();
+            case "6" -> Prime.start();
+            case "0" -> System.out.println("Goodbye!");
+            default -> System.out.println("Unexpected data");
         }
+    }
+
+    public static String getUserName() {
+        return userName;
+    }
+
+    public static void setUserName(String userName) {
+        App.userName = userName;
     }
 }
