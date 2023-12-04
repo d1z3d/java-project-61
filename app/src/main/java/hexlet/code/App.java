@@ -49,7 +49,7 @@ public final class App {
         return userName;
     }
 
-    public static void setUserName(String userName) {
-        App.userName = userName;
+    public static void setUserName(String nameOfUser) {
+        userName = nameOfUser;
     }
 }
