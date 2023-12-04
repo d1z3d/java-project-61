@@ -11,9 +11,9 @@ public class GreatestCommonDivision {
     public static void start() {
         //Подготовка данных
         for (int i = 0; i < Util.ATTEMPTS_TO_WIN; i++) {
-            int numberOne = Util.getRandomNumber();
+            int numberOne = getNumberForGCD();
             System.out.println(numberOne);
-            int numberTwo = Util.getRandomNumber();
+            int numberTwo = getNumberForGCD();
             System.out.println(numberTwo);
 
             String question = String.format("%d %d", numberOne, numberTwo);
@@ -36,5 +36,15 @@ public class GreatestCommonDivision {
         int result = maxValue % minValue;
 
         return result == 0 ? minValue : calculateGCD(minValue, result);
+    }
+
+    private static int getNumberForGCD() {
+        int result = Util.getRandomNumber();
+
+        if (result == 0) {
+            result++;
+        }
+
+        return result;
     }
 }
