@@ -23,8 +23,6 @@ public final class App {
                 """);
         System.out.print("Your choice: ");
 
-        Even.start();
-
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.next();
         System.out.println();
