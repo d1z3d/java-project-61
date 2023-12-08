@@ -9,7 +9,7 @@ public class Calculator {
     private static final String[] OPERATIONS = {"+", "-", "*"};
 
     public static void start() {
-        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][Engine.ATTEMPTS_TO_WIN];
+        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][2];
 
         for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
             int firstOperand = Util.getRandomNumber();
@@ -19,11 +19,8 @@ public class Calculator {
             String question = String.format("%s %s %s", firstOperand, operation, secondOperand);
             String correctAnswer = Integer.toString(calculate(firstOperand, secondOperand, operation));
 
-            for (int j = 0; j < 2; j++) {
-                questionsAndAnswers[i][j] = question;
-                questionsAndAnswers[i][j] = correctAnswer;
-
-            }
+            questionsAndAnswers[i][0] = question;
+            questionsAndAnswers[i][1] = correctAnswer;
         }
 
         Engine.playGame(DESCRIPTION_OF_THE_GAME, questionsAndAnswers);

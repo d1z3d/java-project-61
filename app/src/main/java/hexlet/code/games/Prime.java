@@ -18,7 +18,7 @@ public class Prime {
                                                 503, 509, 521, 523, 541, 547, 557};
 
     public static void start() {
-        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][Engine.ATTEMPTS_TO_WIN];
+        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][2];
 
         for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
             int randomNumber = Util.getRandomNumber(PRIME_NUMBERS[PRIME_NUMBERS.length - 1]);
@@ -28,10 +28,8 @@ public class Prime {
             boolean isContains = ArrayUtils.contains(PRIME_NUMBERS, randomNumber);
             String correctAnswer = isContains ? "yes" : "no";
 
-            for (int j = 0; j < 2; j++) {
-                questionsAndAnswers[i][j] = question;
-                questionsAndAnswers[i][j] = correctAnswer;
-            }
+            questionsAndAnswers[i][0] = question;
+            questionsAndAnswers[i][1] = correctAnswer;
         }
 
         Engine.playGame(DESCRIPTION_THE_GAME, questionsAndAnswers);

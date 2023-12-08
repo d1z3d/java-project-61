@@ -12,7 +12,7 @@ public class Progression {
     private static final int MAX_LENGTH_OF_PROGRESSION = 11;
 
     public static void start() {
-        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][Engine.ATTEMPTS_TO_WIN];
+        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][2];
 
         for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
             int lengthProgression = Util.getRandomNumber(MIN_LENGTH_OF_PROGRESSION, MAX_LENGTH_OF_PROGRESSION);
@@ -25,11 +25,8 @@ public class Progression {
             String question = getQuestion(progression, indexOfUnknownElementProgression);
             String correctAnswer = Integer.toString(progression[indexOfUnknownElementProgression]);
 
-            for (int j = 0; j < 2; j++) {
-                questionsAndAnswers[i][j] = question;
-                questionsAndAnswers[i][j] = correctAnswer;
-
-            }
+            questionsAndAnswers[i][0] = question;
+            questionsAndAnswers[i][1] = correctAnswer;
         }
 
         Engine.playGame(DESCRIPTION_OF_THE_GAME, questionsAndAnswers);
