@@ -6,67 +6,34 @@ import org.apache.commons.lang3.ArrayUtils;
 
 public class Prime {
     private static final String DESCRIPTION_THE_GAME = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    private static final String[] QUESTIONS = new String[Util.ATTEMPTS_TO_WIN];
-    private static final String[] CORRECT_ANSWERS = new String[Util.ATTEMPTS_TO_WIN];
-    private static final int[] PRIME_NUMBERS = calculatePrimeArray();
-    private static final int MIN_DIVIDERS = 2;
-    private static final int MAX_DIVIDERS = 3;
-    private static int dividers = 1;
+    private static final int[] PRIME_NUMBERS = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41,
+                                                43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
+                                                101, 103, 107, 109, 113, 127, 131, 137, 139, 149,
+                                                151, 157, 163, 167, 173, 179, 181, 191, 193, 197,
+                                                199, 211, 223, 227, 229, 233, 239, 241, 251, 257,
+                                                263, 269, 271, 277, 281, 283, 293, 307, 311, 313,
+                                                317, 331, 337, 347, 349, 353, 359, 367, 373, 379,
+                                                383, 389, 397, 401, 409, 419, 421, 431, 433, 439,
+                                                443, 449, 457, 461, 463, 467, 479, 487, 491, 499,
+                                                503, 509, 521, 523, 541, 547, 557};
+
     public static void start() {
-        //Подготовка данных
-        for (int i = 0; i < Util.ATTEMPTS_TO_WIN; i++) {
+        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][Engine.ATTEMPTS_TO_WIN];
+
+        for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
             int randomNumber = Util.getRandomNumber(PRIME_NUMBERS[PRIME_NUMBERS.length - 1]);
 
             String question = Integer.toString(randomNumber);
-            QUESTIONS[i] = question;
 
             boolean isContains = ArrayUtils.contains(PRIME_NUMBERS, randomNumber);
-            String correctAnswer = Util.getCorrectAnswer(isContains);
-            CORRECT_ANSWERS[i] = correctAnswer;
+            String correctAnswer = isContains ? "yes" : "no";
+
+            for (int j = 0; j < 2; j++) {
+                questionsAndAnswers[i][j] = question;
+                questionsAndAnswers[i][j] = correctAnswer;
+            }
         }
 
-        //Старт игры
-        Engine.playGame(DESCRIPTION_THE_GAME, QUESTIONS, CORRECT_ANSWERS);
-    }
-
-    private static int[] calculatePrimeArray() {
-        int attempts = Util.getRandomNumber();
-
-        int lengthArray = calculateLengthArrayForPrimeGame(attempts) - 1;
-        int[] result = new int[lengthArray];
-        int indexToInsert = 0;
-
-        for (int i = 2; i <= attempts; i++) {
-            for (int j = 2; j <= i; j++) {
-                if (i % j == 0) {
-                    dividers++;
-                }
-            }
-            if (dividers <= MIN_DIVIDERS) {
-                result[indexToInsert] = i;
-                indexToInsert++;
-            }
-            dividers = 1;
-        }
-
-        return result;
-    }
-
-    private static int calculateLengthArrayForPrimeGame(int number) {
-        //Считаю, что каждое каждое число можем делить на 1, поэтому начинаю массив с числа 2
-        int lengthArray = 1;
-
-        for (int i = 2; i <= number; i++) {
-            for (int j = 2; j <= i; j++) {
-                if (i % j == 0) {
-                    dividers++;
-                }
-            }
-            if (dividers < MAX_DIVIDERS) {
-                lengthArray++;
-            }
-            dividers = 1;
-        }
-        return lengthArray;
+        Engine.playGame(DESCRIPTION_THE_GAME, questionsAndAnswers);
     }
 }

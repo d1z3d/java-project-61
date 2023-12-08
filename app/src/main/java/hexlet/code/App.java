@@ -9,12 +9,6 @@ import hexlet.code.games.GreatestCommonDivision;
 import java.util.Scanner;
 
 public final class App {
-    private static String userName;
-
-    private App() {
-        userName = "User";
-    }
-
     public static void main(String[] args) {
 
         System.out.println("""
@@ -43,13 +37,5 @@ public final class App {
             case "0" -> System.out.println("Goodbye!");
             default -> System.out.println("Unexpected data");
         }
-    }
-
-    public static String getUserName() {
-        return userName;
-    }
-
-    public static void setUserName(String nameOfUser) {
-        userName = nameOfUser;
     }
 }

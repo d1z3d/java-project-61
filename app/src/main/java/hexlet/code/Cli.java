@@ -11,8 +11,8 @@ public class Cli {
         Scanner scanner = new Scanner(System.in);
 
         if (scanner.hasNextLine()) {
-            App.setUserName(scanner.nextLine());
-            System.out.println("Hello, " + App.getUserName() + "!");
+            String userName = scanner.nextLine();
+            System.out.println("Hello, " + userName + "!");
         } else {
             System.out.println("Name was not entered. Goodbye!");
         }

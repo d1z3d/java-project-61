@@ -6,22 +6,27 @@ import hexlet.code.Util;
 
 public class Calculator {
     private static final String DESCRIPTION_OF_THE_GAME = "What is the result of the expression?";
-    private static final String[] QUESTIONS = new String[Util.ATTEMPTS_TO_WIN];
-    private static final String[] CORRECT_ANSWERS = new String[Util.ATTEMPTS_TO_WIN];
     private static final String[] OPERATIONS = {"+", "-", "*"};
 
     public static void start() {
-        //Подготовка данных
-        for (int i = 0; i < Util.ATTEMPTS_TO_WIN; i++) {
-            String question = prepareQuestion();
-            String correctAnswer = calculate(question);
+        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][Engine.ATTEMPTS_TO_WIN];
 
-            QUESTIONS[i] = question;
-            CORRECT_ANSWERS[i] = correctAnswer;
+        for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
+            int firstOperand = Util.getRandomNumber();
+            int secondOperand = Util.getRandomNumber();
+            String operation = getRandomOperation();
+
+            String question = String.format("%s %s %s", firstOperand, operation, secondOperand);
+            String correctAnswer = Integer.toString(calculate(firstOperand, secondOperand, operation));
+
+            for (int j = 0; j < 2; j++) {
+                questionsAndAnswers[i][j] = question;
+                questionsAndAnswers[i][j] = correctAnswer;
+
+            }
         }
 
-        //Старт игры
-        Engine.playGame(DESCRIPTION_OF_THE_GAME, QUESTIONS, CORRECT_ANSWERS);
+        Engine.playGame(DESCRIPTION_OF_THE_GAME, questionsAndAnswers);
     }
 
 
@@ -30,33 +35,19 @@ public class Calculator {
         return OPERATIONS[randomIndex];
     }
 
-    private static String prepareQuestion() {
-        String firstOperand = Integer.toString(Util.getRandomNumber());
-        String secondOperand = Integer.toString(Util.getRandomNumber());
-        String operation = getRandomOperation();
-
-        return String.format("%s %s %s", firstOperand, operation, secondOperand);
-    }
-
-    private static String calculate(String question) {
-        String[] questionByItem = question.split(" ");
-
-        int firstOperand = Integer.parseInt(questionByItem[0]);
-        int secondOperand = Integer.parseInt(questionByItem[2]);
-        String operation = questionByItem[1];
-
+    private static int calculate(int firstOperand, int secondOperand, String operation) {
         switch (operation) {
             case "+" -> {
-                return Integer.toString(firstOperand + secondOperand);
+                return firstOperand + secondOperand;
             }
             case "-" -> {
-                return Integer.toString(firstOperand - secondOperand);
+                return firstOperand - secondOperand;
             }
             case "*" -> {
-                return Integer.toString(firstOperand * secondOperand);
+                return firstOperand * secondOperand;
             }
             default -> {
-                return "";
+                return 0;
             }
         }
     }

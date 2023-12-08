@@ -10,36 +10,37 @@ public class Progression {
     private static final int DEFAULT_NUMBER_OF_PROGRESSION = 21;
     private static final int MIN_LENGTH_OF_PROGRESSION = 5;
     private static final int MAX_LENGTH_OF_PROGRESSION = 11;
-    private static final String[] QUESTIONS = new String[Util.ATTEMPTS_TO_WIN];
-    private static final String[] CORRECT_ANSWERS = new String[Util.ATTEMPTS_TO_WIN];
 
     public static void start() {
-        //Подготовка данных
-        for (int i = 0; i < Util.ATTEMPTS_TO_WIN; i++) {
+        String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][Engine.ATTEMPTS_TO_WIN];
+
+        for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
+            int lengthProgression = Util.getRandomNumber(MIN_LENGTH_OF_PROGRESSION, MAX_LENGTH_OF_PROGRESSION);
+            int valueOfStartProgression = Util.getRandomNumber(DEFAULT_NUMBER_OF_PROGRESSION);
             int range = Util.getRandomNumber();
-            int[] progression = createProgression(range);
+
+            int[] progression = createProgression(lengthProgression, valueOfStartProgression, range);
             int indexOfUnknownElementProgression = Util.getRandomNumber(progression.length);
 
             String question = getQuestion(progression, indexOfUnknownElementProgression);
-            QUESTIONS[i] = question;
-
             String correctAnswer = Integer.toString(progression[indexOfUnknownElementProgression]);
-            CORRECT_ANSWERS[i] = correctAnswer;
+
+            for (int j = 0; j < 2; j++) {
+                questionsAndAnswers[i][j] = question;
+                questionsAndAnswers[i][j] = correctAnswer;
+
+            }
         }
 
-        //Старт игры
-        Engine.playGame(DESCRIPTION_OF_THE_GAME, QUESTIONS, CORRECT_ANSWERS);
+        Engine.playGame(DESCRIPTION_OF_THE_GAME, questionsAndAnswers);
     }
 
-    private static int[] createProgression(int range) {
-        int valueOfStartProgression = Util.getRandomNumber(DEFAULT_NUMBER_OF_PROGRESSION);
-        int lengthProgression = Util.getRandomNumber(MIN_LENGTH_OF_PROGRESSION, MAX_LENGTH_OF_PROGRESSION);
+    private static int[] createProgression(int lengthProgression, int valueOfStartProgression, int range) {
+
         int[] progression = new int[lengthProgression];
 
-        progression[0] = valueOfStartProgression;
-
-        for (int i = 1; i < lengthProgression; i++) {
-            progression[i] = progression[i - 1] + range;
+        for (int i = 0; i < lengthProgression; i++) {
+            progression[i] = valueOfStartProgression + range * i;
         }
 
         return progression;
