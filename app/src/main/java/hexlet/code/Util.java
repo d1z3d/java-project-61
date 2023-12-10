@@ -6,7 +6,6 @@ public final class Util {
     private static final Random RANDOM = new Random();
     private static final int DEFAULT_RANGE = 101;
 
-
     public static int getRandomNumber(int bound) {
         return RANDOM.nextInt(bound);
     }
@@ -17,15 +16,5 @@ public final class Util {
 
     public static int getRandomNumber() {
         return getRandomNumber(DEFAULT_RANGE);
-    }
-
-    public static int getNumberForGCD(int number) {
-        int result = number;
-
-        if (result == 0) {
-            result++;
-        }
-
-        return result;
     }
 }

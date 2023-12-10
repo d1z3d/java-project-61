@@ -12,10 +12,8 @@ public class Even {
         for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
             int randomNumber = Util.getRandomNumber();
             String question = Integer.toString(randomNumber);
-
             boolean isEven = isEven(randomNumber);
             String correctAnswer = isEven ? "yes" : "no";
-
             questionsAndAnswers[i][0] = question;
             questionsAndAnswers[i][1] = correctAnswer;
         }

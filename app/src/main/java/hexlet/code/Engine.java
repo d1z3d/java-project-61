@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public final class Engine {
     public static final int ATTEMPTS_TO_WIN = 3;
-    public static void playGame(String descriptionOfTheGame, String[][] questionsAndAnswers) {
 
+    public static void playGame(String descriptionOfTheGame, String[][] questionsAndAnswers) {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-
         Scanner scanner = new Scanner(System.in);
         String userName = "";
 
@@ -19,17 +18,10 @@ public final class Engine {
             System.out.println("Name was not entered. Goodbye!");
         }
 
-
         for (int i = 0; i < ATTEMPTS_TO_WIN; i++) {
-            //Вывод описания игры
             System.out.println(descriptionOfTheGame);
-
-            //Вывод вопроса
             System.out.printf("Question: %s\n", questionsAndAnswers[i][0]);
-
-            //Получаю ответ пользователя
             System.out.print("Your answer: ");
-
             String answer = scanner.nextLine();
 
             if (answer.equalsIgnoreCase(questionsAndAnswers[i][1])) {
@@ -37,10 +29,9 @@ public final class Engine {
             } else {
                 System.out.printf("'%s' is wrong answer ;(. Correct answer '%s'\n", answer, questionsAndAnswers[i][1]);
                 System.out.printf("Let's try again, %s!\n", userName);
-                System.exit(0);
+                return;
             }
         }
-
         System.out.printf("Congratulations, %s!\n", userName);
     }
 }
