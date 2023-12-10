@@ -10,8 +10,8 @@ public class GreatestCommonDivision {
         String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][2];
 
         for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
-            int numberOne = Util.getRandomNumber(1, 101);
-            int numberTwo = Util.getRandomNumber(1, 101);
+            int numberOne = Util.getRandomNumber(1, Util.DEFAULT_RANGE);
+            int numberTwo = Util.getRandomNumber(1, Util.DEFAULT_RANGE);
             String question = String.format("%d %d", numberOne, numberTwo);
             String correctAnswer = Integer.toString(calculateGCD(numberOne, numberTwo));
             questionsAndAnswers[i][0] = question;

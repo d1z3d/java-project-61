@@ -4,7 +4,7 @@ import java.util.Random;
 
 public final class Util {
     private static final Random RANDOM = new Random();
-    private static final int DEFAULT_RANGE = 101;
+    public static final int DEFAULT_RANGE = 101;
 
     public static int getRandomNumber(int bound) {
         return RANDOM.nextInt(bound);

@@ -10,7 +10,7 @@ public class Prime {
         String[][] questionsAndAnswers = new String[Engine.ATTEMPTS_TO_WIN][2];
 
         for (int i = 0; i < Engine.ATTEMPTS_TO_WIN; i++) {
-            int randomNumber = Util.getRandomNumber(2, 101);
+            int randomNumber = Util.getRandomNumber(2, Util.DEFAULT_RANGE);
             String question = Integer.toString(randomNumber);
             String correctAnswer = isPrime(randomNumber) ? "yes" : "no";
             questionsAndAnswers[i][0] = question;
