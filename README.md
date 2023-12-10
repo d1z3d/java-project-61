@@ -16,8 +16,7 @@
 Brain Games is a console application that contains user greeting and 5 different games. 
 
 ## Based on
-Gradle 8.4
-Java 21
+Gradle 8.4\nJava 21
 
 ## Run application
 You have to install the [make](https://guides.hexlet.io/ru/makefile-as-task-runner/?_gl=1*1b2sh59*_ga*NzQ5MzAxNTIzLjE2OTkyOTM2MTc.*_ga_PM3R85EKHN*MTcwMjIyNTQ0MS4xMDguMS4xNzAyMjI3OTYzLjYwLjAuMA..*_ga_WWGZ6EVHEY*MTcwMjIyNTQ0MS4xMTEuMS4xNzAyMjI3OTYzLjYwLjAuMA..) utility.
