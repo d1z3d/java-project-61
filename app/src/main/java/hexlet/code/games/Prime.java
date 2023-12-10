@@ -23,11 +23,9 @@ public class Prime {
     private static boolean isPrime(int number) {
         int dividers = 1;
 
-        for (int i = 2; i < number; i++) {
-            for (int j = 2; j <= i; j++) {
-                if (i % j == 0) {
-                    dividers++;
-                }
+        for (int i = 2; i <= number; i++) {
+            if (number % i == 0) {
+                dividers++;
             }
         }
 
