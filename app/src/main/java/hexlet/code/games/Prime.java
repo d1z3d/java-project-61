@@ -21,15 +21,16 @@ public class Prime {
     }
 
     private static boolean isPrime(int number) {
-        int dividers = 1;
+        if (number < 2) {
+            return false;
+        }
 
-        for (int i = 2; i <= number; i++) {
+        for (int i = 2; i * i <= number; i++) {
             if (number % i == 0) {
-                dividers++;
+                return false;
             }
         }
 
-        boolean isPrime = dividers <= 2;
-        return isPrime;
+        return true;
     }
 }

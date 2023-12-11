@@ -25,7 +25,9 @@ public class Calculator {
         Engine.playGame(DESCRIPTION_OF_THE_GAME, questionsAndAnswers);
     }
 
-    private static int calculate(int firstOperand, int secondOperand, String operation) {
+    private static int calculate(int firstOperand,
+                                 int secondOperand,
+                                 String operation) throws IllegalArgumentException {
         switch (operation) {
             case "+" -> {
                 return firstOperand + secondOperand;
@@ -37,7 +39,7 @@ public class Calculator {
                 return firstOperand * secondOperand;
             }
             default -> {
-                return 0;
+                throw new IllegalArgumentException("Wrong type of operation");
             }
         }
     }
